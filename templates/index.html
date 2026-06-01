@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact Converter Pro</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#0f172a;
+    color:white;
+}
+
+.container{
+    width:500px;
+    padding:40px;
+    background:#111827;
+    border-radius:20px;
+    box-shadow:0 0 25px rgba(0,0,0,.5);
+    text-align:center;
+}
+
+h1{
+    margin-bottom:15px;
+}
+
+.subtitle{
+    color:#94a3b8;
+    margin-bottom:25px;
+}
+
+.upload-box{
+    border:2px dashed #60a5fa;
+    border-radius:15px;
+    padding:30px;
+    cursor:pointer;
+    display:block;
+}
+
+.upload-box:hover{
+    background:#1e293b;
+}
+
+input[type=file]{
+    display:none;
+}
+
+.file-name{
+    margin-top:15px;
+    color:#60a5fa;
+}
+
+button{
+    width:100%;
+    margin-top:20px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.footer{
+    margin-top:20px;
+    color:#94a3b8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📱 Contact Converter Pro</h1>
+
+    <p class="subtitle">
+        Convert Excel or CSV contacts into a VCF file instantly
+    </p>
+
+    <form action="/convert" method="POST" enctype="multipart/form-data">
+
+        <label class="upload-box">
+
+            📂 Click to Upload Excel / CSV
+
+            <input
+                type="file"
+                name="file"
+                accept=".xlsx,.csv"
+                required
+                onchange="showFileName(this)">
+
+        </label>
+
+        <div class="file-name" id="filename">
+            No file selected
+        </div>
+
+        <button type="submit">
+            🚀 Convert to VCF
+        </button>
+
+    </form>
+
+    <div class="footer">
+        Built with Flask • Pandas • Python
+    </div>
+
+</div>
+
+<script>
+
+function showFileName(input){
+
+    if(input.files.length > 0){
+
+        document.getElementById("filename").innerText =
+        input.files[0].name;
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
